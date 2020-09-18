@@ -1,23 +1,27 @@
 import React, { Component } from 'react';
+import StudentsContext from '../StudentsContext/StudentsContext';
 
 class MinMax extends Component {
-  constructor(props) {
-    super(props)
+  static contextType = StudentsContext;
+
+  getStudents() {
+    return this.context.students
   }
 
   maximum() {
-    const studentsList = this.props.students;
+    const studentsList = this.getStudents();
     const grades = studentsList.map((s) => s.grade);
     const maxValue = Math.max(...grades);
     return maxValue;
   }
 
   minimum() {
-    const studentsList = this.props.students;
+    const studentsList = this.getStudents();
     const grades = studentsList.map((s) => s.grade);
     const minValue = Math.min(...grades)
     return minValue;
   }
+  
   render() {
     return (
       <div>

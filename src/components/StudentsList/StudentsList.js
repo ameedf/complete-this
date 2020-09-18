@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import Average from '../Average/Average';
 import Student from '../Student/Student';
+import StudentsContext from '../StudentsContext/StudentsContext';
 
 class StudentsList extends Component {
-  
   render() {
     return (
-      <div>
-        {this.props.allStudents.map(
-          s => <Student data={s} />
-        )}
-      </div>
+      <StudentsContext.Consumer>
+        {value =>
+          <div>
+            {value.students.map(s => <Student data={s} />)}
+          </div>
+        }
+      </StudentsContext.Consumer>
     );
   }
 }
-
-
 
 export default StudentsList;

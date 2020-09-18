@@ -9,11 +9,9 @@ class Content extends Component {
     return (<div>
       <Switch>
         <Route path="/students-list" component={StudentsList} />
+        <Route path="/average" component={Average} />
+        <Route path="/min-max" component={MinMax} />
       </Switch>
-
-      <StudentsList allStudents={this.props.students} />
-      <Average students={this.props.students} />
-      <MinMax students={this.props.students} />
     </div>);
   }
 }
