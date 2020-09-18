@@ -1,41 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Page2 from '../Page2/Page2';
+import Average from '../Average/Average';
+import MinMax from '../MinMax/MinMax';
+import StudentsList from '../StudentsList/StudentsList';
 
-const Content = (props) => {
-  return (
-    <div style={{width: '100%'}}>
-      <table style={{width: '100%'}}>
-        <tbody>
-          <tr>
-            <td>
-              <Switch>
-                <Route path="/" exact component={Welcome} />
-                <Route path="/page1" exact component={Page1} />
-                <Route path="/page2/:number" exact component={Page2} />
-              </Switch>
-            </td>
-            <td>Statistics</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
+class Content extends Component {
+  render() {
+    return (<div>
+      <Switch>
+        <Route path="/students-list" component={StudentsList} />
+      </Switch>
+
+      <StudentsList allStudents={this.props.students} />
+      <Average students={this.props.students} />
+      <MinMax students={this.props.students} />
+    </div>);
+  }
 }
-
-const Welcome = (props) => {
-  console.log("Welcome props:", props);
-  return (
-    <div>Welcome home !</div>
-  );
-}
-
-const Page1 = (props) => {
-  console.log("Page 1 props:", props);
-  return (
-    <div>Page 1</div>
-  );
-}
-
 
 export default Content;
